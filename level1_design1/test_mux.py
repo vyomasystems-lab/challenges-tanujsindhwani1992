@@ -237,6 +237,7 @@ async def test_mux(dut):
                 dut._log.info(f'ERROR : The Select value = {dut.sel.value} , Input value = 0 , Output value = {dut.out.value}')
                 ERROR_COUNT = ERROR_COUNT + 1 
         
-    print(ERROR_COUNT)
-    await Timer(2, units='ns')                        
-    assert ERROR_COUNT == 0 , f'Error message count : {ERROR_COUNT}'           
+    cocotb.log.info(f'ERROR_COUNT = {ERROR_COUNT}')
+    await Timer(2, units='ns') 
+    error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
+    assert ERROR_COUNT == 0 , error_message         
