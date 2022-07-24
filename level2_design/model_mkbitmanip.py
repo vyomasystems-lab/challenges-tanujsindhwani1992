@@ -29,27 +29,6 @@ def bitmanip(mav_putvalue_instr, mav_putvalue_src1,mav_putvalue_src2, mav_putval
     shamt1= mav_putvalue_src2 & (31)
     #print("func7 {0} immvalue1 {1} : func3 {2} opcode {3} ".format(func7,imm_value_1,func3,opcode))
     #print("func7_imm {0} func7_imm_SHFL {1} func7_1bit {2} ".format(func7_imm, func7_imm_SHFL, func7_1bit))
-    if((func7 == "0100000") and (func3 == "111") and (opcode == "0110011") ):
-        print('--ANDN 1')
-        mav_putvalue=mav_putvalue_src1 & (~mav_putvalue_src2)
-        mav_putvalue=mav_putvalue & 0xffffffff
-        mav_putvalue=(mav_putvalue<<1)|1
-        return mav_putvalue
-
-    if((func7 == "0100000") and (func3 == "110") and (opcode == "0110011")):
-        print('--ORN 2')
-        mav_putvalue=mav_putvalue_src1 | (~mav_putvalue_src2)
-        mav_putvalue=mav_putvalue & 0xffffffff
-        mav_putvalue=(mav_putvalue<<1)|1
-        return mav_putvalue
-
-    if((func7 == "0100000") and (func3 == "100") and (opcode == "0110011")):
-        print('--XNOR 3')
-        mav_putvalue=mav_putvalue_src1 ^ (~mav_putvalue_src2)
-        mav_putvalue=mav_putvalue & 0xffffffff
-        mav_putvalue=(mav_putvalue<<1)|1
-        return mav_putvalue
-
     if((func7 == "0010000") and (func3 == "001") and (opcode == "0110011")):
         print('--SLO  4')
         shamt1 =mav_putvalue_src2 & (31)

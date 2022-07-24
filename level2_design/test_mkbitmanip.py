@@ -52,7 +52,6 @@ def run_test(dut):
                           'CMOV'        :  [ 0x06005033 , 0xFFFFDFB3 ],    
                           'FSL'         :  [ 0x04001033 , 0xFDFF9FB3 ],
                           'FSR'         :  [ 0x04005033 , 0xFDFFDFB3 ],
-
                           'CLZ'         :  [ 0x60001013 , 0x600F9F93 ],
                           'CTZ'         :  [ 0x60101013 , 0x601F9F93 ],
                           'PCNT'        :  [ 0x60201013 , 0x602F9F93 ],
@@ -64,7 +63,6 @@ def run_test(dut):
                           'CRC32C.B'    :  [ 0x61801013 , 0x618F9F93 ],
                           'CRC32C.H'    :  [ 0x61901013 , 0x619F9F93 ],
                           'CRC32C.W'    :  [ 0x61A01013 , 0x61AF9F93 ],
-
                           'CLMUL'       :  [ 0x0A001033 , 0x0BFF9FB3 ],
                           'CLMULH'      :  [ 0x0A003033 , 0x0BFFBFB3 ],
                           'CLMULR'      :  [ 0x0A002033 , 0x0BFFAFB3 ],
@@ -72,14 +70,11 @@ def run_test(dut):
                           'MAX'         :  [ 0x0A005033 , 0x0BFFDFB3 ],
                           'MINU'        :  [ 0x0A006033 , 0x0BFFEFB3 ],
                           'MAXU'        :  [ 0x0A007033 , 0x0BFFFFB3 ],
-
                           'BDEP'        :  [ 0x48006033 , 0x49FFEFB3 ],
-
                           'BEXT'        :  [ 0x08006033 , 0x09FFEFB3 ],
                           'PACK'        :  [ 0x08004033 , 0x09FFCFB3 ],
                           'PACKU'       :  [ 0x48004033 , 0x49FFCFB3 ],
                           'PACKH'       :  [ 0x08007033 , 0x09FFFFB3 ],
-
                           'SLOI'        :  [ 0x20001013 , 0x27FF9F93 ],
                           'SROI'        :  [ 0x20005013 , 0x27FFDF93 ],
                           'RORI'        :  [ 0x60005013 , 0x67FFDF93 ],
@@ -99,9 +94,9 @@ def run_test(dut):
 
     # input transaction
     for i in range (1) :
-        mav_putvalue_src1 = 0x5a5a5a5a #random.randint(0,4294967296)
-        mav_putvalue_src2 = 0x5a5a5a5a #random.randint(0,4294967296)
-        mav_putvalue_src3 = 0x5a5a5a5a #random.randint(0,4294967296)
+        mav_putvalue_src1 = random.randint(0,4294967296)
+        mav_putvalue_src2 = random.randint(0,4294967296)
+        mav_putvalue_src3 = random.randint(0,4294967296)
         
         for key , values in Instruction_dict.items() :
             for value in values :
