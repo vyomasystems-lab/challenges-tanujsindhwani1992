@@ -34,7 +34,7 @@ async def test_seq_bug1(dut):
     INPUT_REGISTER = 0b0000 
     ERROR_COUNT    = 0 
 
-    # Send a random sequence of 0 & 1 for 100 cycles.
+    # Send a random sequence of 0 & 1 for 1000 cycles.
     for i in range(1000) :
         # Driving random value between 0 & 1 to the DUT.
         INPUT = random.randint(0,1)

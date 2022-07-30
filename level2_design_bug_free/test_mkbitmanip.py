@@ -32,9 +32,10 @@ def run_test(dut):
     yield Timer(10) 
     dut.RST_N.value <= 1
     
+    # Instruction Dictionary
     Instruction_dict = {  'ANDN'        :  [ 0x40007033 , 0x41FFFFB3 ],  #Error Found
                           'ORN'         :  [ 0x40006033 , 0x41FFEFB3 ],
-                          'XNOR'        :  [ 0x40004033 , 0x41FFCFB3],
+                          'XNOR'        :  [ 0x40004033 , 0x41FFCFB3 ],
                           'SLO'         :  [ 0x20001033 , 0x21FF9FB3 ],
                           'SRO'         :  [ 0x20005033 , 0x21FFDFB3 ],
                           'ROL'         :  [ 0x60001033 , 0x61FF9FB3 ],
@@ -132,5 +133,6 @@ def run_test(dut):
     for i in range(5) :
         yield Timer(1)
 
+    # Final Error Checking to make the test decision.    
     error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
     assert ERROR_COUNT == 0 , error_message

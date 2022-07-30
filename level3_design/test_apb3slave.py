@@ -5,8 +5,7 @@ import random
 import sys
 import cocotb
 from cocotb.decorators import coroutine
-from cocotb.triggers import Timer, RisingEdge
-from cocotb.triggers import RisingEdge, FallingEdge
+from cocotb.triggers import Timer, RisingEdge, FallingEdge
 from cocotb.clock import Clock
 
 
@@ -34,7 +33,7 @@ async def test_apb3slave(dut):
     await RisingEdge(dut.PCLK)               
     ERROR_COUNT = 0
 
-    # Random Write & Reads to the APB3 Slave
+    # Random Write followed by Read to the APB3 Slave
     for i in range(100) :
         dut.PADDR.value  = random.randint(0,255)
         dut.PSEL.value   = 1 
@@ -64,6 +63,7 @@ async def test_apb3slave(dut):
     for i in range(5) :
         await FallingEdge(dut.PCLK)
 
+    # Final Error Checking to make the test decision.    
     error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
     assert ERROR_COUNT == 0 , error_message 
 

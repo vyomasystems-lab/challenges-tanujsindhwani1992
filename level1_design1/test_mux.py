@@ -9,8 +9,9 @@ async def test_mux(dut):
     cocotb.log.info('##### CTB: Develop your test here ########')
     ERROR_COUNT = 0 ;
     for i in range(32):
-        SEL = i ;
         
+        # Driving Input values
+        SEL = i ;
         dut.sel.value = SEL 
         VALUE = random.randint(1,3)
         dut.inp0.value = VALUE
@@ -77,6 +78,7 @@ async def test_mux(dut):
 
         await Timer(2, units='ns')
 
+        # Comparing Output depending upon the value of SEL applied.
         if dut.sel.value == 0 :
             if dut.out.value != dut.inp0.value :
                 dut._log.info(f'ERROR : The Select value = {dut.sel.value} , Input value = {dut.inp0.value} , Output value = {dut.out.value}')
@@ -236,7 +238,8 @@ async def test_mux(dut):
             if dut.out.value != 0 : 
                 dut._log.info(f'ERROR : The Select value = {dut.sel.value} , Input value = 0 , Output value = {dut.out.value}')
                 ERROR_COUNT = ERROR_COUNT + 1 
-        
+
+    # Final Error Checking to make the test decision.    
     cocotb.log.info(f'ERROR_COUNT = {ERROR_COUNT}')
     await Timer(2, units='ns') 
     error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
