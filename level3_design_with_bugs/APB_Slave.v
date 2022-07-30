@@ -33,6 +33,7 @@ always @(negedge PRESETn or negedge PCLK) begin
     case (State)
       `IDLE : begin
         PRDATA <= 0;
+        PREADY <= 0;
         if (PSEL) begin
           if (PWRITE) begin
             State <= `W_ENABLE;
