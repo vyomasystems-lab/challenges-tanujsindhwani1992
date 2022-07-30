@@ -24,6 +24,7 @@ reg [1:0] State;
 
 always @(negedge PRESETn or negedge PCLK) begin
   if (PRESETn == 0) begin
+    $display($time,"Inside Reset");
     State <= `IDLE;
     PRDATA <= 0;
     PREADY <= 0;
@@ -32,7 +33,9 @@ always @(negedge PRESETn or negedge PCLK) begin
   else begin
     case (State)
       `IDLE : begin
+        $display($time,"Inside Idle");
         PRDATA <= 0;
+        PREADY <= 0;
         if (PSEL) begin
           if (PWRITE) begin
             State <= `W_ENABLE;
@@ -44,6 +47,7 @@ always @(negedge PRESETn or negedge PCLK) begin
       end
 
       `W_ENABLE : begin
+        $display($time,"Inside Write Enable");
         if (PSEL && PWRITE) begin
           RAM[PADDR]  <= PWDATA;
           PREADY <=1;          
@@ -52,6 +56,7 @@ always @(negedge PRESETn or negedge PCLK) begin
       end
 
       `R_ENABLE : begin
+        $display($time,"Inside Read Enable");      
         if (PSEL && !PWRITE) begin
           PREADY <= 1;
           PRDATA <= RAM[PADDR];
