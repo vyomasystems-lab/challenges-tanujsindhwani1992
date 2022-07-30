@@ -5,7 +5,7 @@ TOPLEVEL_LANG ?= verilog
 PWD=$(shell pwd)
 export PYTHONPATH := $(PWD):$(PYTHONPATH)  # reference model
 
-VERILOG_SOURCES = $(PWD)/APB3_Slave.v               # provide your design path
+VERILOG_SOURCES = $(PWD)/APB_Slave.v               # provide your design path
 
 TOPLEVEL := APB_Slave         # design file
 MODULE   := test_apb3slave    # test file

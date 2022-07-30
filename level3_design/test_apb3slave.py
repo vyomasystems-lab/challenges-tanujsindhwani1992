@@ -9,8 +9,6 @@ from cocotb.triggers import Timer, RisingEdge
 from cocotb.result import TestFailure
 from cocotb.clock import Clock
 
-from model_mkbitmanip import *
-
 # Clock Generation
 @cocotb.coroutine
 def clock_gen(signal):
@@ -22,7 +20,7 @@ def clock_gen(signal):
 
 # Sample Test
 @cocotb.test()
-def run_test(dut):
+def test_apb3slave(dut):
 
     # clock
     cocotb.fork(clock_gen(dut.PCLK))
@@ -31,3 +29,4 @@ def run_test(dut):
     dut.PRESETn.value <= 0
     yield Timer(10) 
     dut.PRESETn.value <= 1
+
