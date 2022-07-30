@@ -46,7 +46,7 @@ always @(negedge PRESETn or negedge PCLK) begin
 
       `W_ENABLE : begin
         if (PSEL && PWRITE) begin
-          RAM[PADDR]  <= PWDATA[29:0];
+          RAM[PADDR]  <= PWDATA[30:0];
           PREADY <=1;          
         end
           State <= `IDLE;

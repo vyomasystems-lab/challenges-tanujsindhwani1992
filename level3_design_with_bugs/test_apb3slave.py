@@ -9,14 +9,6 @@ from cocotb.triggers import Timer, RisingEdge
 from cocotb.triggers import RisingEdge, FallingEdge
 from cocotb.clock import Clock
 
-# Clock Generation
-@cocotb.coroutine
-def clock_gen(signal):
-    while True:
-        signal.value <= 0
-        yield Timer(1) 
-        signal.value <= 1
-        yield Timer(1) 
 
 # Sample Test
 @cocotb.test()
@@ -51,6 +43,7 @@ async def test_apb3slave(dut):
         dut.PWDATA.value = dut_write_data
         await RisingEdge(dut.PREADY)       
         await RisingEdge(dut.PCLK)          
+        cocotb.log.info(f'DUT WRITE DATA ={hex(dut_write_data)}')
 
         dut.PSEL.value   = 1 
         dut.PWRITE.value = 0  # must be 0 for Read transaction
@@ -59,19 +52,18 @@ async def test_apb3slave(dut):
 
         # obtaining the output
         dut_read_data = dut.PRDATA.value
-
-        cocotb.log.info(f'DUT OUTPUT={hex(dut_read_data)}')
-        cocotb.log.info(f'EXPECTED OUTPUT={hex(dut_write_data)}')
+        cocotb.log.info(f'DUT READ DATA ={hex(dut_read_data)}')
 
         # comparison
-        error_message = f'Read Data from DUT = {hex(dut_read_data)} does not match Write Data = {hex(dut_write_data)}'
+        error_message = f'ERROR : Read Data from DUT = {hex(dut_read_data)} does not match Write Data = {hex(dut_write_data)}'
         if( dut_read_data != dut_write_data ) :
             dut._log.info(error_message)
             ERROR_COUNT = ERROR_COUNT + 1 
 
     cocotb.log.info(f'ERROR_COUNT = {ERROR_COUNT}')
     for i in range(5) :
-        await FallingEdge(dut.clk)
+        await FallingEdge(dut.PCLK)
+
     error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
     assert ERROR_COUNT == 0 , error_message 
 
