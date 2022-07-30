@@ -92,6 +92,7 @@ def run_test(dut):
                           'BFP'         :  [ 0x48007033 , 0x49FFFFB3 ]
     }
 
+    ERROR_COUNT = 0 
     # input transaction
     for i in range (100) :
         mav_putvalue_src1 = random.randint(0,4294967296)
@@ -118,9 +119,18 @@ def run_test(dut):
                 # obtaining the output
                 dut_output = dut.mav_putvalue.value
 
-                cocotb.log.info(f'DUT OUTPUT={hex(dut_output)}')
-                cocotb.log.info(f'EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
+                cocotb.log.info(f'{key} : DUT OUTPUT ={hex(dut_output)}')
+                cocotb.log.info(f'{key} : EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
 
                 # comparison
-                error_message = f'Value mismatch DUT = {hex(dut_output)} does not match MODEL = {hex(expected_mav_putvalue)}'
-                assert dut_output == expected_mav_putvalue, error_message
+                error_message = f'ERROR : DUT OUTPUT = {hex(dut_output)} does not match REF MODEL = {hex(expected_mav_putvalue)} for OPCODE = {key}'
+                if( dut_output != expected_mav_putvalue ) :
+                    dut._log.info(error_message)
+                    ERROR_COUNT = ERROR_COUNT + 1
+
+    cocotb.log.info(f'ERROR_COUNT = {ERROR_COUNT}')
+    for i in range(5) :
+        yield Timer(1)
+
+    error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
+    assert ERROR_COUNT == 0 , error_message
