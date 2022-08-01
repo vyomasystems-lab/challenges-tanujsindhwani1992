@@ -35,6 +35,7 @@ The following error is seen:
 
 ## Test Scenario **(Important)**
 - Test Inputs: 
+```
     9895000.00ns INFO     Input value Driven = 1
     9905000.00ns INFO     Input value Driven = 0
     9915000.00ns INFO     Input value Driven = 1
@@ -43,7 +44,7 @@ The following error is seen:
     9945000.00ns INFO     Input value Driven = 1
     9955000.00ns INFO     SEQUENE DETECTED BY REF MODEL
     9955000.00ns INFO     ERROR : DUT OUTPUT = 0 , REF MODEL OUTPUT = 1 , PREVIOUS 4 INPUTS = 0b1011
-
+```
 - Expected Output: seq_seen should have been 1 at 9955000.00 ns
 - Observed Output in the DUT dut.seq_seen = 0
 
