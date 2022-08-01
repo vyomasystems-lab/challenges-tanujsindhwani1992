@@ -1,10 +1,17 @@
-# Adder Design Verification
+# Capture the Bug - A Design Verification Hackathon
 
-The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
+```
+To provide a basic hands-on for design verification, which enhances practical verification knowledge. The verification challenge helps to understand the verification intent to detect bugs in designs, understand debugging and fix the buggy designs. It provides a practical exposure to real world design verification activities
 
-*Make sure to include the Gitpod id in the screenshot*
+The  Hackathon  aims  to generate skilled manpower in the domain of Design Verification, which will strengthen the quality of designs being manufactured.
+It reduces chip failure which in turn improves the time to market cycle of Semiconductor products.
 
-![](https://i.imgur.com/miWGA1o.png)
+The Indian Govt initiative Chips to Startup (C2S) aims to propel innovation, build domestic capacities to ensure hardware sovereignty, and build a Semiconductor Ecosystem that requires 85,000+ highly trained engineers. Working towards this vision statement, we have planned the 3-Week “Capture the Bug” , a Design Verification Challenge.
+
+This Hackathon is organized by NIELIT  Calicut and technically facilitated by  Vyoma Systems , VLSI System Design & Robotics and Automation Society, IEEE Kerala Section.
+
+The program is supported  by the Chips to Startup (C2S) Program of the Govt of India and Mentored by IIT Madras 
+```
 
 ## Verification Environment
 
@@ -23,31 +30,3 @@ The following error is seen:
 assert dut.sum.value == A+B, "Adder result is incorrect: {A} + {B} != {SUM}, expected value={EXP}".format(
                      AssertionError: Adder result is incorrect: 7 + 5 != 2, expected value=12
 ```
-## Test Scenario **(Important)**
-- Test Inputs: a=7 b=5
-- Expected Output: sum=12
-- Observed Output in the DUT dut.sum=2
-
-Output mismatches for the above inputs proving that there is a design bug
-
-## Design Bug
-Based on the above test input and analysing the design, we see the following
-
-```
- always @(a or b) 
-  begin
-    sum = a - b;             ====> BUG
-  end
-```
-For the adder design, the logic should be ``a + b`` instead of ``a - b`` as in the design code.
-
-## Design Fix
-Updating the design and re-running the test makes the test pass.
-
-![](https://i.imgur.com/5XbL1ZH.png)
-
-The updated design is checked in as adder_fix.v
-
-## Verification Strategy
-
-## Is the verification complete ?
