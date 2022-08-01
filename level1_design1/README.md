@@ -92,8 +92,8 @@ Based on the above test input and analysing the design, we see the following
 ```
 
 The Output for the above buggy code is as follows:
-![image](https://user-images.githubusercontent.com/109667378/182108628-eddd14b7-0194-47b5-a630-454426037d71.png)
 
+![image](https://user-images.githubusercontent.com/109667378/182108628-eddd14b7-0194-47b5-a630-454426037d71.png)
 
 For the multiplexer design, the correct code is shown below:
 ```
@@ -135,6 +135,7 @@ For the multiplexer design, the correct code is shown below:
 
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
+
 ![image](https://user-images.githubusercontent.com/109667378/182108808-0927502e-9835-4ce2-915b-3bbc99e96017.png)
 
 The updated design is checked in at:
@@ -142,11 +143,14 @@ https://github.com/vyomasystems-lab/challenges-tanujsindhwani1992/blob/master/le
 
 ## Verification Strategy
 The verification strategy used for the verification of multiplexer design is as follows:
+
+```
 a) Providing all SEL values ( 0 to 31 ) inside a for loop to the DUT.
 b) After providing inputs , wait for 2ns for the output to appear.
 c) Comparing the output value to the appropriate input depending upon the SEL value applied.
 d) If there is any mismatch, increase the ERROR_COUNT
 e) Outside the for loop , compare if ERROR_COUNT == 0 , failing which will fire an assertion to make the test fail.
+```
 
 ## Is the verification complete ?
 All inputs values of sel and inp0....inp30 have been verified.
