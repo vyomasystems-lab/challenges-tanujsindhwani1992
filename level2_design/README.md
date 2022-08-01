@@ -205,6 +205,6 @@ d) Outside the for loop the , ERROR_COUNT variable was checked to be 0, if false
 ```
 
 ## Is the verification complete ?
-All the opcodes provided by the Reference model were applied to the DUT and the max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 values were put to random values between ( 0 , 2**32 - 1 ) and the same was executed for 100 times. An increase in the count of the number of times the opcode is executed can be increased to check more values of max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3. 
+All the opcodes provided by the Reference model were applied to the DUT and the max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 values were put to random values between ( 0 , 2**32 - 1 ) and the same was executed for 100 times. An increase in the count of the number of times the opcode is executed will provide better coverage for max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 values. 
 
 Providing the above inputs, we can say that the all possible input combinations have been tried , and the complete code has been excercised. This provides us more confidence about the verification strategy used to verify the Sequence Dectector 1011 design.
