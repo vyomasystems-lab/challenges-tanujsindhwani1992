@@ -196,7 +196,7 @@ Updating the design and re-running the test makes the test pass.
 The updated design is checked in at https://github.com/vyomasystems-lab/challenges-tanujsindhwani1992/blob/master/level2_design_bug_free/mkbitmanip.v
 
 ## Verification Strategy
-The verification strategy used for the verification of Sequener Design design is as follows:
+The verification strategy used for the verification of BitManipulation Processor Design design is as follows:
 
 ```
 a) An Instruction Dictionary was created for all opcodes mentioned in the ref model.
