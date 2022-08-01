@@ -34,7 +34,7 @@ async def test_apb3slave(dut):
     ERROR_COUNT = 0
 
     # Random Write followed by Read to the APB3 Slave
-    for i in range(100) :
+    for i in range(1000) :
         dut.PADDR.value  = random.randint(0,255)
         dut.PSEL.value   = 1 
         dut.PWRITE.value = 1  # must be 1 for Write transaction
