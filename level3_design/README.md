@@ -10,7 +10,8 @@ The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explaine
 
 ```
 APB3 Slave provides a low cost interface to the APB Master which is not pipelined in nature. 
-At a given point, the APB Master can only generate a Read or a Write transfer to the Slave but not both. Also, all APB transfers takes a minimum of 2 cycles to complete. 
+At a given point, the APB Master can only generate a Read or a Write transfer to the Slave but not both. 
+Also, all APB transfers takes a minimum of 2 cycles to complete. 
 
 Signal	Source	Description
 PCLK	Clock	The rising edge of PCLK times all transfers on the APB.
