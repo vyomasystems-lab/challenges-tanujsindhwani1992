@@ -1,27 +1,36 @@
-# Adder Design Verification
+# Multiplexer Design Verification
 
-The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
+The Multiplexer verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
+![image](https://user-images.githubusercontent.com/109667378/182103268-e7b66947-15ca-4646-a9d3-5ff62db7d6e8.png)
 
-*Make sure to include the Gitpod id in the screenshot*
-
-![](https://i.imgur.com/miWGA1o.png)
 
 ## Verification Environment
 
-The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (adder module here) which takes in 4-bit inputs *a* and *b* and gives 5-bit output *sum*
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (Multiplexer module here) which takes in 5 bit select signal and 31 2 bit input signals. Depending upon the value of select signal , the multiplexer selects a particular input as 2 bit output signal.
+For ex : If SEL == 10 , then OUT = INP10 and so on.
 
 The values are assigned to the input port using 
 ```
-dut.a.value = 7
-dut.b.value = 5
+# Here i ranges from 0 to 31 ( all possible values for 5 bit select line ) and a random value is selected for all inputs between 1 & 3.
+SEL = i ;
+dut.sel.value = SEL 
+VALUE = random.randint(1,3)
+dut.inp0.value = VALUE
 ```
 
-The assert statement is used for comparing the adder's outut to the expected value.
+The assert statement is used for comparing the Multiplexer's outut to the expected input value.
 
 The following error is seen:
 ```
-assert dut.sum.value == A+B, "Adder result is incorrect: {A} + {B} != {SUM}, expected value={EXP}".format(
-                     AssertionError: Adder result is incorrect: 7 + 5 != 2, expected value=12
+# Comparing Output depending upon the value of SEL applied.
+if dut.sel.value == 0 :
+   if dut.out.value != dut.inp0.value :
+      dut._log.info(f'ERROR : The Select value = {dut.sel.value} , Input value = {dut.inp0.value} , Output value = {dut.out.value}')
+      ERROR_COUNT = ERROR_COUNT + 1 
+
+# Final Error Checking to make the test decision
+error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
+assert ERROR_COUNT == 0 , error_message
 ```
 ## Test Scenario **(Important)**
 - Test Inputs: a=7 b=5
