@@ -1,6 +1,6 @@
 # APB3 Slave Design Verification
 
-The APB3 Slave Design verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
+The APB3 Slave Design verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon. The APB3 Slave design is an open source core available at https://github.com/maomran/APB-Slave
 
 ![image](https://user-images.githubusercontent.com/109667378/182148938-c20762f9-a79c-4c9e-878e-47e6488b6472.png)
 
