@@ -9,7 +9,9 @@ The APB3 Slave Design verification environment is setup using [Vyoma's UpTickPro
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (APB3 Slave module here) which takes in PCLK , PRESETn , PADDR , PWRITE , PSEL and PWDATA as inputs. The DUT contains a memory reg [`DATAWIDTH-1:0] RAM [0:2**`ADDRWIDTH -1] which is used for storing the Write Data provied by the Master. Also, the same memory provides the PRDATA as output from the Slave. 
 
 ```
-APB3 Slave provides a low cost interface to the APB Master which is not pipelined in nature. At a given point, the APB Master can only generate a Read or a Write transfer to the Slave but not both. Also, all APB transfers takes a minimum of 2 cycles to complete. 
+APB3 Slave provides a low cost interface to the APB Master which is not pipelined in nature. 
+At a given point, the APB Master can only generate a Read or a Write transfer to the Slave but not both. Also, all APB transfers takes a minimum of 2 cycles to complete. 
+
 Signal	Source	Description
 PCLK	Clock	The rising edge of PCLK times all transfers on the APB.
 PRESETn	Reset	The APB reset signal is active LOW.
