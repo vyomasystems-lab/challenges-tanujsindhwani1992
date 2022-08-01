@@ -1,6 +1,7 @@
 # Multiplexer Design Verification
 
 The Multiplexer verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
+
 ![image](https://user-images.githubusercontent.com/109667378/182103268-e7b66947-15ca-4646-a9d3-5ff62db7d6e8.png)
 
 
@@ -33,20 +34,32 @@ error_message = f'ERROR MESSAGE COUNT =  {hex(ERROR_COUNT)}'
 assert ERROR_COUNT == 0 , error_message
 ```
 ## Test Scenario **(Important)**
-- Test Inputs: a=7 b=5
-- Expected Output: sum=12
-- Observed Output in the DUT dut.sum=2
+Scenario 1 :
+- Test Inputs: SEL = 12 ( 0b01100 ) , INP12 ( 0b11 )
+- Expected Output: OUT = 0b11
+- Observed Output in the DUT dut.out = 00 
 
-Output mismatches for the above inputs proving that there is a design bug
+Scenario 2 :
+- Test Inputs: SEL = 13 ( 0b01101 ) , INP13 ( 0b10 )
+- Expected Output: OUT = 0b10
+- Observed Output in the DUT dut.out = 01
+
+Scenario 3 :
+- Test Inputs: SEL = 30 ( 0b11110 ) , INP12 ( 0b11 )
+- Expected Output: OUT = 0b11
+- Observed Output in the DUT dut.out = 00 
+
+Output mismatches for the above inputs proving that there is a design bug.
+The seed for the above run is "Seeding Python random module with 1659342367"
 
 ## Design Bug
 Based on the above test input and analysing the design, we see the following
 
 ```
- always @(a or b) 
-  begin
-    sum = a - b;             ====> BUG
-  end
+      5'b01101: out = inp12;      ====> BUG : 01101 is 13 in Decimal. For inp 12 , it should be 01100
+      5'b01101: out = inp13;      ====> BUG : Multiple declartion for 5'b01101 , Always above one will be picked.
+      5'b11101: out = inp29;
+      default: out = 0;           ====> BUG : No case statement for sel 5'b11110 , causing it to go to default state.
 ```
 For the adder design, the logic should be ``a + b`` instead of ``a - b`` as in the design code.
 
