@@ -48,7 +48,7 @@ The following error is seen:
 - Expected Output: seq_seen should have been 1 at 9955000.00 ns
 - Observed Output in the DUT dut.seq_seen = 0
 
-Output mismatches for the above inputs proving that there is a design bug
+Output mismatches for the above inputs proving that there is a design bug.
 From the above test input, it is clear that Design has incorrect state transitions mentioned within the code.
 
 ## Design Bug
