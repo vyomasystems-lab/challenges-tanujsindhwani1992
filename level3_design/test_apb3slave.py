@@ -38,7 +38,7 @@ async def test_apb3slave(dut):
         dut.PADDR.value  = random.randint(0,255)
         dut.PSEL.value   = 1 
         dut.PWRITE.value = 1  # must be 1 for Write transaction
-        dut_write_data   = random.randint(0,4294967296)
+        dut_write_data   = random.randint(0,4294967295)
         dut.PWDATA.value = dut_write_data
         await RisingEdge(dut.PREADY)       
         await RisingEdge(dut.PCLK)          

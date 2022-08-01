@@ -96,9 +96,9 @@ def run_test(dut):
     ERROR_COUNT = 0 
     # input transaction
     for i in range (100) :
-        mav_putvalue_src1 = random.randint(0,4294967296)
-        mav_putvalue_src2 = random.randint(0,4294967296)
-        mav_putvalue_src3 = random.randint(0,4294967296)
+        mav_putvalue_src1 = random.randint(0,4294967295)
+        mav_putvalue_src2 = random.randint(0,4294967295)
+        mav_putvalue_src3 = random.randint(0,4294967295)
         
         for key , values in Instruction_dict.items() :
             for value in values :
