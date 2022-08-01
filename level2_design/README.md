@@ -143,10 +143,10 @@ Based on the above test input and analysing the design, we see the following
   assign field1__h109 =
 	     (mav_putvalue_instr[31:25] == 7'b0100000 &&
 	      x__h254 == 10'b1110110011) ?
-	       x__h39889 :
+	       x__h39889 :                                    ===> BUG : Not ANDN operation
 	       IF_mav_putvalue_instr_BITS_31_TO_25_EQ_0b10000_ETC___d2273 ;
   
-  assign x__h39889 = mav_putvalue_src1 & mav_putvalue_src2 ;
+  assign x__h39889 = mav_putvalue_src1 & mav_putvalue_src2 ;  ===> BUG : Not ANDN operation
 ```
 The Output for the above buggy code is as follows:
 
