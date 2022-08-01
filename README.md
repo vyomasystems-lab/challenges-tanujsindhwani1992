@@ -38,4 +38,15 @@ For more details refer : https://github.com/vyomasystems-lab/challenges-tanujsin
 
 ## About Me
 
+Hello all , my name is Tanuj Sindhwani. I work as "Member of consulting staff" with Siemens EDA .
+I have been working in this industry for about 9 years now & have worked with organizations such as Qualcomm and Truechip.
 
+I did my B.Tech from Maharaja Agrasen Institute of technology in 2013.
+Post my B.Tech , I joined Mentor Graphics Higher Education Program , which introduced me to System Verilog & UVM.
+
+This was my stepping stone towards VLSI industry.
+
+I have worked on various AMBA , USB , SAS , NVMe , CHI protocols throughout my career.
+
+Thanks for your time.
+For more information about me , refer : https://www.linkedin.com/in/tanuj-sindhwani-24628745/
