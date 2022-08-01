@@ -95,6 +95,7 @@ Based on the above test input and analysing the design, we see the following
   end
 ```
 The Output for the above buggy code is as follows:
+
 ![image](https://user-images.githubusercontent.com/109667378/182135983-b234ad21-9fb8-4e2d-b524-9cf75ddc1610.png)
 
 From the above test input and code , we see that the Design is not for an overlapping 1011 sequence detector.
