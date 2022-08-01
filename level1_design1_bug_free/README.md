@@ -19,7 +19,7 @@ VALUE = random.randint(1,3)
 dut.inp0.value = VALUE
 ```
 
-The assert statement is used for comparing the Multiplexer's outut to the expected input value.
+The assert statement is used for comparing the Multiplexer's output to the expected input value.
 
 The following error is seen:
 ```

@@ -18,7 +18,7 @@ The values are assigned to the input port using
         dut._log.info(f'Input value Driven = {INPUT}')
 ```
 
-The assert statement is used for comparing the Sequence Detector's outut to the expected value.
+The assert statement is used for comparing the Sequence Detector's output to the expected value.
 
 The following error is seen:
 ```
