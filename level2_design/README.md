@@ -8,7 +8,7 @@ The Bit Manipulation Processor Design verification environment is setup using [V
 
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (Bit Manipulation Processor module here) which takes in clk (unused) , reset (unused) , max_putvalue_instr , max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 and EN_mav_putvalue as inputs. max_putvalue_instr acts as the opcode and also provides which operands to choose between max_put_value_src1 ,  max_put_value_src2 &  max_put_value_src3. Depending upon the max_putvalue_instr , max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 values , the DUT provides mav_putvalue as an output. The LSB bit of mav_putvalue indicates that output is valid and the remaining 32 bits provides the result.
 
-The values are assigned to the input port using 
+The values are assigned to the input port using :
 ```
     # Instruction Dictionary
     Instruction_dict = {  'ANDN'        :  [ 0x40007033 , 0x41FFFFB3 ],  #Error Found
@@ -76,9 +76,6 @@ The values are assigned to the input port using
                 print(hex(value))
                 mav_putvalue_instr = value
 
-                # expected output from the model
-                expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3)
-
                 # driving the input transaction
                 dut.mav_putvalue_src1.value = mav_putvalue_src1
                 dut.mav_putvalue_src2.value = mav_putvalue_src2
@@ -115,7 +112,7 @@ The following error is seen:
 - Expected Output: 0x11e470401
 - Observed Output in the DUT dut.mav_putvalue = 0xa0000067
 
-Output mismatches for the above inputs proving that there is a design bug with ANDN.
+Output mismatches for the above inputs proving that there is a design bug with ANDN opcode.
 
 
 ## Design Bug
