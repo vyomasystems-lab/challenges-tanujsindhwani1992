@@ -120,6 +120,10 @@ def run_test(dut):
                 # obtaining the output
                 dut_output = dut.mav_putvalue.value
 
+                cocotb.log.info(f'{key} : INSTRUCTION ={hex(mav_putvalue_instr)}')
+                cocotb.log.info(f'{key} : SRC1 ={hex(mav_putvalue_src1)}')
+                cocotb.log.info(f'{key} : SRC2 ={hex(mav_putvalue_src2)}')
+                cocotb.log.info(f'{key} : SRC3 ={hex(mav_putvalue_src3)}')                                
                 cocotb.log.info(f'{key} : DUT OUTPUT ={hex(dut_output)}')
                 cocotb.log.info(f'{key} : EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
 
