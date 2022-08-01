@@ -113,7 +113,8 @@ The following error is seen:
 - Observed Output in the DUT dut.mav_putvalue = 0xa0000067
 
 Output mismatches for the above inputs proving that there is a design bug with ANDN opcode.
-
+From the above values, we can conclude that ANDN is behaving like an AND command.
+Also, we see no effect of applying CLK & RESET to the design as both the pins are mentioned as unused.
 
 ## Design Bug
 Based on the above test input and analysing the design, we see the following
@@ -207,4 +208,4 @@ d) Outside the for loop the , ERROR_COUNT variable was checked to be 0, if false
 ## Is the verification complete ?
 All the opcodes provided by the Reference model were applied to the DUT and the max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 values were put to random values between ( 0 , 2**32 - 1 ) and the same was executed for 100 times. An increase in the count of the number of times the opcode is executed will provide better coverage for max_put_value_src1 ,  max_put_value_src2 ,  max_put_value_src3 values. 
 
-Providing the above inputs, we can say that the all possible input combinations have been tried , and the complete code has been excercised. This provides us more confidence about the verification strategy used to verify the Sequence Dectector 1011 design.
+Providing the above inputs, we can say that the all possible input combinations have been tried , and the complete code has been excercised. This provides us more confidence about the verification strategy used to verify the Bit Manipulation processor design.
