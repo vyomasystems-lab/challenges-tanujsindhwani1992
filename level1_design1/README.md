@@ -92,10 +92,8 @@ Based on the above test input and analysing the design, we see the following
 ```
 
 The Output for the above buggy code is as follows:
-```
 ![image](https://user-images.githubusercontent.com/109667378/182108628-eddd14b7-0194-47b5-a630-454426037d71.png)
 
-```
 
 For the multiplexer design, the correct code is shown below:
 ```
@@ -139,7 +137,8 @@ For the multiplexer design, the correct code is shown below:
 Updating the design and re-running the test makes the test pass.
 ![image](https://user-images.githubusercontent.com/109667378/182108808-0927502e-9835-4ce2-915b-3bbc99e96017.png)
 
-The updated design is checked in as https://github.com/vyomasystems-lab/challenges-tanujsindhwani1992/blob/master/level1_design1_bug_free/mux.v
+The updated design is checked in at:
+https://github.com/vyomasystems-lab/challenges-tanujsindhwani1992/blob/master/level1_design1_bug_free/mux.v
 
 ## Verification Strategy
 The verification strategy used for the verification of multiplexer design is as follows:
