@@ -1,6 +1,5 @@
 # Capture the Bug - A Design Verification Hackathon
 
-```
 To provide a basic hands-on for design verification, which enhances practical verification knowledge. The verification challenge helps to understand the verification intent to detect bugs in designs, understand debugging and fix the buggy designs. It provides a practical exposure to real world design verification activities
 
 The  Hackathon  aims  to generate skilled manpower in the domain of Design Verification, which will strengthen the quality of designs being manufactured.
@@ -11,7 +10,7 @@ The Indian Govt initiative Chips to Startup (C2S) aims to propel innovation, bui
 This Hackathon is organized by NIELIT  Calicut and technically facilitated by  Vyoma Systems , VLSI System Design & Robotics and Automation Society, IEEE Kerala Section.
 
 The program is supported  by the Chips to Startup (C2S) Program of the Govt of India and Mentored by IIT Madras 
-```
+
 
 ## CTB Challenge Level 1 - Multiplexer 
 
