@@ -2,7 +2,7 @@
 
 The APB3 Slave Design verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
-![image](https://user-images.githubusercontent.com/109667378/182148938-c20762f9-a79c-4c9e-878e-47e6488b6472.png)
+![image](https://user-images.githubusercontent.com/109667378/182152552-64688418-fb01-46ff-8381-f3ea6635514d.png)
 
 ## Verification Environment
 
@@ -121,7 +121,7 @@ Based on the above test input and analysing the design, we see the following
 ```
 The Output for the above buggy code is as follows:
 
-![image](https://user-images.githubusercontent.com/109667378/182150506-388e318b-5b5b-4944-b4b0-efdad62526cc.png)
+![image](https://user-images.githubusercontent.com/109667378/182152655-824dac59-95ef-48a0-8cf7-fad02ad65d12.png)
 
 For the APB3 Slave design, the correct code is shown below.
 
@@ -164,23 +164,21 @@ For the APB3 Slave design, the correct code is shown below.
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![image](https://user-images.githubusercontent.com/109667378/182136084-4f4e166e-974c-445b-9d27-1fb68cead31c.png)
+![image](https://user-images.githubusercontent.com/109667378/182152721-f5e401c3-e3e3-4852-b635-d58bb99dc3a5.png)
 
-The updated design is checked in at https://github.com/vyomasystems-lab/challenges-tanujsindhwani1992/blob/master/level1_design2_bug_free/seq_detect_1011.v
+The updated design is checked in at https://github.com/vyomasystems-lab/challenges-tanujsindhwani1992/blob/master/level3_design_bug_free/APB_Slave.v
 
 ## Verification Strategy
 The verification strategy used for the verification of APB3 Slave Design design is as follows:
 
 ```
-a) Send a random sequence of 0 & 1 on inp_bit input for 1000 cycles.
-b) Save the same inp_bit applied to the DUT onto a 4 bit shift register by shifting left the previous content by 1 bit and adding the inp_bit 
-c) If the 4 bit shift register contains value 1011 , assert golden seq_seen bit.
-d) Compare DUT seq_seen and golden seq_seen. If mismatch , increase ERROR COUNT
+a) Send a Write transaction to a random address with random PWDATA to the APB3 Slave.
+b) Send a Read transaction to the same address selected in a) and get the read data.
+c) Check if Read Data == Write Date , increase ERROR_COUNT on mismatch.
 e) Assert ERROR_COUNT == 0 to make the decision about test fail or pass.
 ```
 
 ## Is the verification complete ?
-A random sequnce of 0 & 1 was applied to the DUT for 1000 cycles and on the fly checking was done by using a 4 bit shift register.
-A mismatch between the DUT's output and shift register's contents was highlighted within the Error.
+A random sequence of Write followed by Read was applied to the APB3 Slave and Read Data was compared with the Write Data indicating that the APB3 Slave is able to correct store the Data. Also, a wait for PREADY signal was included within the TB so as to check whether the Slave is asserting PREADY along with the PRDATA.
 
 Providing the above inputs, we can say that the all possible input combinations have been tried , and the complete code has been excercised. This provides us more confidence about the verification strategy used to verify the APB3 Slave design.
