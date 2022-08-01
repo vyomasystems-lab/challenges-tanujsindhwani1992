@@ -18,12 +18,11 @@ PCLK	Clock	The rising edge of PCLK times all transfers on the APB.
 PRESETn	Reset	The APB reset signal is active LOW.
 PADDR	Master	This is the APB address bus. It can be up to 32 bits wide and is driven by the peripheral bus bridge unit.
 PSELx	Master	Each slave device has this signal. It demonstrates which slave is chosen for data transaction
-PENABLE	Master	This signal indicates the second and subsequent cycles of an APB transfer
 PWRITE	Master	This signal indicates an APB write access when HIGH and an APB read access when LOW.
 PWDATA	Master	This bus is driven by the peripheral bus bridge unit during write cycles when PWRITE is HIGH. This bus can be up to 32 bits wide.
 PREADY	Slave	The slave uses this signal to extend an APB transfer.
 PRDATA	Slave	The selected slave drives this bus during read cycles when PWRITE is LOW. This bus can be up to 32-bits wide.
-PSLVERR	Slave	This signal indicates a transfer failure
+
 
 APB3 Slave State machine is defined as
 •	IDLE This is the default state of the APB.
